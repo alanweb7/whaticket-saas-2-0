@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "versionSystem": "2.0",
+  "versionSystem": "10.0.0",
   "nomeEmpresa": "Pack Typebot",
   "private": true,
   "dependencies": {
