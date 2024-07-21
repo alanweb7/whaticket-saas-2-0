@@ -7,7 +7,7 @@ import {
   InputAdornment,
   makeStyles,
   Paper,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 
@@ -16,7 +16,7 @@ import { useDate } from "../../hooks/useDate";
 import api from "../../services/api";
 import { green } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   mainContainer: {
     display: "flex",
     flexDirection: "column",
@@ -25,24 +25,24 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     borderRadius: 0,
     height: "100%",
-    borderLeft: "1px solid rgba(0, 0, 0, 0.12)",
+    borderLeft: "1px solid rgba(0, 0, 0, 0.12)"
   },
   messageList: {
     position: "relative",
     overflowY: "auto",
     height: "100%",
     ...theme.scrollbarStyles,
-    backgroundColor: theme.palette.chatlist, //DARK MODE PLW DESIGN//
+    backgroundColor: theme.palette.chatlist //DARK MODE PACK TYPEBOT//
   },
   inputArea: {
     position: "relative",
-    height: "auto",
+    height: "auto"
   },
   input: {
-    padding: "20px",
+    padding: "20px"
   },
   buttonSend: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   boxLeft: {
     padding: "10px 10px 5px",
@@ -52,19 +52,19 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 300,
     borderRadius: 10,
     borderBottomLeftRadius: 0,
-    border: "1px solid rgba(0, 0, 0, 0.12)",
+    border: "1px solid rgba(0, 0, 0, 0.12)"
   },
   boxRight: {
     padding: "10px 10px 5px",
     margin: "10px 10px 10px auto",
     position: "relative",
-    backgroundColor: "green", //DARK MODE PLW DESIGN//
+    backgroundColor: "green", //DARK MODE PACK TYPEBOT//
     textAlign: "right",
     maxWidth: 300,
     borderRadius: 10,
     borderBottomRightRadius: 0,
-    border: "1px solid rgba(0, 0, 0, 0.12)",
-  },
+    border: "1px solid rgba(0, 0, 0, 0.12)"
+  }
 }));
 
 export default function ChatMessages({
@@ -74,7 +74,7 @@ export default function ChatMessages({
   handleLoadMore,
   scrollToBottomRef,
   pageInfo,
-  loading,
+  loading
 }) {
   const classes = useStyles();
   const { user } = useContext(AuthContext);
@@ -89,9 +89,9 @@ export default function ChatMessages({
     }
   };
 
-  const unreadMessages = (chat) => {
+  const unreadMessages = chat => {
     if (chat !== undefined) {
-      const currentUser = chat.users.find((u) => u.userId === user.id);
+      const currentUser = chat.users.find(u => u.userId === user.id);
       return currentUser.unreads > 0;
     }
     return 0;
@@ -107,7 +107,7 @@ export default function ChatMessages({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleScroll = (e) => {
+  const handleScroll = e => {
     const { scrollTop } = e.currentTarget;
     if (!pageInfo.hasMore || loading) return;
     if (scrollTop < 600) {
@@ -153,13 +153,13 @@ export default function ChatMessages({
           <Input
             multiline
             value={contentMessage}
-            onKeyUp={(e) => {
+            onKeyUp={e => {
               if (e.key === "Enter" && contentMessage.trim() !== "") {
                 handleSendMessage(contentMessage);
                 setContentMessage("");
               }
             }}
-            onChange={(e) => setContentMessage(e.target.value)}
+            onChange={e => setContentMessage(e.target.value)}
             className={classes.input}
             endAdornment={
               <InputAdornment position="end">
